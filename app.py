@@ -43,7 +43,7 @@ if uploaded_file is not None:
     if not toc:
         st.error("⚠️ このPDFには「しおり（目次）」が含まれていないか、読み込めませんでした。")
     else:
-        st.header("2. 抽出したいセクションを選択")
+        st.header("2. 抽出したいしおり（目次）を選択")
         
         # --- データフレーム作成 ---
         table_data = []
@@ -57,7 +57,7 @@ if uploaded_file is not None:
             
             table_data.append({
                 "抽出": False,          # チェックボックス用列
-                "セクション名": display_title,
+                "しおり名": display_title,
                 "開始ページ": page,
                 "original_index": i    # ロジック用の隠し列
             })
@@ -71,7 +71,7 @@ if uploaded_file is not None:
             column_config={
                 "抽出": st.column_config.CheckboxColumn(
                     "選択",
-                    help="抽出したいセクションにチェックを入れてください",
+                    help="抽出したいしおり（目次）にチェックを入れてください",
                     default=False
                 ),
                 "original_index": None  # インデックス列は画面には表示しない
@@ -94,7 +94,7 @@ if uploaded_file is not None:
                 selected_indices = selected_rows["original_index"].tolist()
                 
                 if not selected_indices:
-                    st.warning("まずは上の表で、抽出したいセクションにチェックを入れてください。")
+                    st.warning("まずは上の表で、抽出したいしおり（目次）にチェックを入れてください。")
                 else:
                     with st.spinner("PDFを作成しています..."):
                         # ロジック呼び出し
@@ -131,3 +131,4 @@ else:
     # ファイル未選択時の表示
 
     st.info("👈 左側のサイドバーからPDFファイルをアップロードしてください。")
+
