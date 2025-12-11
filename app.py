@@ -52,7 +52,7 @@ if uploaded_file is not None:
             
             # 視認性を良くするためのインデント処理
             indent = "　" * (level - 1)
-            marker = "■" if level == 2 else ("●" if level >= 3 else "")
+            marker = "" if level == 2 else ("" if level >= 3 else "")
             display_title = f"{indent}{marker} {title}"
             
             table_data.append({
@@ -131,4 +131,5 @@ else:
     # ファイル未選択時の表示
 
     st.info("👈 左側のサイドバーからPDFファイルをアップロードしてください。")
+
 
