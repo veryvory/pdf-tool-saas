@@ -4,7 +4,7 @@ import pdf_logic  # 同じフォルダにある pdf_logic.py をインポート
 
 # --- ページ設定 ---
 st.set_page_config(
-    page_title="PDFパラ単位抽出ツール (SaaS版)",
+    page_title="PDFしおり単位抽出ツール (SaaS版)",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -19,7 +19,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- タイトルと説明 ---
-st.title("📄 PDFパラ単位抽出ツール (Web版)")
+st.title("📄 PDFしおり単位抽出ツール (Web版)")
 st.markdown("""
 このツールはPDFの「しおり（目次）」構造を読み取り、
 指定したセクションだけを抽出して新しいPDFを作成したり、ページ数を集計してExcelに出力します。
@@ -52,7 +52,7 @@ if uploaded_file is not None:
             
             # 視認性を良くするためのインデント処理
             indent = "　" * (level - 1)
-            marker = "◆" if level == 2 else ("・" if level >= 3 else "")
+            marker = "■" if level == 2 else ("●" if level >= 3 else "")
             display_title = f"{indent}{marker} {title}"
             
             table_data.append({
@@ -129,4 +129,5 @@ if uploaded_file is not None:
 
 else:
     # ファイル未選択時の表示
+
     st.info("👈 左側のサイドバーからPDFファイルをアップロードしてください。")
